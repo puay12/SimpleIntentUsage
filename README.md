@@ -1,6 +1,6 @@
 # Simple Intent Usages
-It is a simple project implementing both Intent types, **Explicit Intent** and **Implicit Intent**. The main activity can also **get results** from the second activity. Saved instance state has also been implemented.\
-There are 6 cases/experiments for different Intent usages which a button represents each, there are:\
+It is a simple project implementing both Intent types, **Explicit Intent** and **Implicit Intent**. The main activity can also **get results** from the second activity. Saved instance state has also been implemented.\\
+There are 6 cases/experiments for different Intent usages which a button represents each, there are:
 * Move to the second activity
 * Move with a certain data to the second activity
 * Move with object to the second activity (using data class and Parcelable)
