@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    companion object{
+        private const val STATE_RESULT = "state result"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val btnMoveWithObject: Button = findViewById(R.id.btn_move_with_object)
         val btnDialNumber: Button = findViewById(R.id.btn_dial_number)
         val btnMoveForResult: Button = findViewById(R.id.btn_move_for_result)
+        val btnMoveToDetail: Button = findViewById(R.id.btn_move_to_detail)
         tvResult = findViewById(R.id.tv_result)
 
         btnMoveActivity.setOnClickListener(this)
@@ -36,6 +41,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnMoveWithObject.setOnClickListener(this)
         btnDialNumber.setOnClickListener(this)
         btnMoveForResult.setOnClickListener(this)
+        btnMoveToDetail.setOnClickListener(this)
+
+        if (savedInstanceState != null){
+            tvResult.text = savedInstanceState.getString(STATE_RESULT)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(STATE_RESULT, tvResult.text.toString())
     }
 
     override fun onClick(view: View?) {
@@ -70,6 +85,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_move_for_result -> {
                 val moveForResultIntent = Intent(this@MainActivity, MoveForResultActivity::class.java)
                 resultLauncher.launch(moveForResultIntent)
+            }
+            R.id.btn_move_to_detail -> {
+                val moveToDetailIntent = Intent(this@MainActivity, ViewDetailActivity::class.java)
+                startActivity(moveToDetailIntent)
             }
         }
     }
